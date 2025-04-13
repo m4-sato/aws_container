@@ -1,0 +1,28 @@
+# --- ベースイメージの選択 ---
+# Python 3.11 のスリムバージョンをベースイメージとして使用します。
+# 必要に応じてバージョンを変更してください (例: python:3.12-slim)。
+FROM python:3.11-slim
+
+# --- 作業ディレクトリの設定 ---
+# コンテナ内の作業ディレクトリを /app に設定します。
+WORKDIR /app
+
+# --- 依存関係ファイルのコピー ---
+# requirements.txt をコンテナ内の /app にコピーします。
+# スクリプト本体より先にコピーすることで、依存関係が変わらない限り
+# pip install のレイヤーキャッシュが効き、ビルド時間を短縮できます。
+COPY requirements.txt .
+
+# --- 依存関係のインストール ---
+# pip をアップグレードし、requirements.txt に記載されたライブラリをインストールします。
+# --no-cache-dir オプションでキャッシュを無効にし、イメージサイズを若干削減します。
+RUN pip install --no-cache-dir --upgrade pip && \
+    pip install --no-cache-dir -r requirements.txt
+
+# --- アプリケーションコードのコピー ---
+# app.py (Pythonスクリプト) をコンテナ内の /app にコピーします。
+COPY streaming.py .
+
+# --- コンテナ起動時に実行するコマンド ---
+# コンテナが起動したときに python app.py を実行します。
+CMD ["python", "streaming.py"]
