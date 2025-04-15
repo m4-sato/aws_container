@@ -365,4 +365,5 @@ aws lambda publish-layer-version --layer-name langchain-layer --description "My 
     - トレーシング（コスト管理）、評価、モニタリング、プロンプト管理
   - Lansfuse
     クラウド版とself host版がある[Langfuse GitHub](https://langfuse.com/docs/integrations/langchain/tracing)
+    - [AWS Bedrock & Langfuse記事](https://www.docswell.com/s/kawara-y/Z4VRPG-2025-03-24-212139#p1)
   - [LangSmith VS Langfuse](https://langfuse.com/faq/all/langsmith-alternative)
