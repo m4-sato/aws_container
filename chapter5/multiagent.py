@@ -12,7 +12,7 @@ from langsmith import traceable
 
 # LangSmith の設定
 os.environ["LANGCHAIN_TRACING_V2"] = "true"
-os.environ["LANGCHAIN_API_KEY"] = "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"
+os.environ["LANGCHAIN_API_KEY"] = ""
 os.environ["LANGCHAIN_PROJECT"] = "bedrock-agent-monitoring"
 
 
