@@ -15,8 +15,8 @@ python-dateutil = "2.8.2"
 python-dotenv = "^1.0.0"
 langchain-aws = "0.1.4"
 langchain = "^0.2.0"  # 最新バージョンを使用
-langsmith = "^0.1.17"  # langchainが要求する範囲内のバージョンを使用
 langchain-core = "^0.2.0"
+langfuse = "2.60.2"
 
 [build-system]
 requires = ["poetry-core"]

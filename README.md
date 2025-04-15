@@ -364,3 +364,5 @@ aws lambda publish-layer-version --layer-name langchain-layer --description "My 
     - SLAの提供
     - トレーシング（コスト管理）、評価、モニタリング、プロンプト管理
   - Lansfuse
+    クラウド版とself host版がある[Langfuse GitHub](https://langfuse.com/docs/integrations/langchain/tracing)
+  - [LangSmith VS Langfuse](https://langfuse.com/faq/all/langsmith-alternative)

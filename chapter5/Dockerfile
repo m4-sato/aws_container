@@ -28,5 +28,5 @@ COPY . .
 EXPOSE 8501
 
 # コンテナ起動時にStreamlitアプリを実行（エントリーポイントがapp.pyの場合）
-CMD ["streamlit", "run", "test.py", "--server.enableCORS", "false", "--server.address=0.0.0.0"]
+CMD ["streamlit", "run", "take1.py", "--server.enableCORS", "false", "--server.address=0.0.0.0"]
 
