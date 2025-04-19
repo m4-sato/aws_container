@@ -421,4 +421,5 @@ aws lambda publish-layer-version --layer-name langchain-layer --description "My 
 - Sagemakerは機械学習に必要な開発環境を素早く構築できるフルマネージド型の機械学習サービス
 
 ### Bedrock Claude Chat
-- [チャットボットのサンプル](https://github.com/aws-samples/bedrock-claude-chat/blob/main/docs/README_ja.md)
+- [チャットボットのサンプル](https://github.com/aws-samplpassword
+es/bedrock-claude-chat/blob/main/docs/README_ja.md)
