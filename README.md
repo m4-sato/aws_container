@@ -367,3 +367,58 @@ aws lambda publish-layer-version --layer-name langchain-layer --description "My 
     クラウド版とself host版がある[Langfuse GitHub](https://langfuse.com/docs/integrations/langchain/tracing)
     - [AWS Bedrock & Langfuse記事](https://www.docswell.com/s/kawara-y/Z4VRPG-2025-03-24-212139#p1)
   - [LangSmith VS Langfuse](https://langfuse.com/faq/all/langsmith-alternative)
+
+
+### カスタムモデル（ファインチューニングと継続的な事前トレーニング）
+1. ファインチューニング
+2. 継続的な事前トレーニング
+
+1. ファインチューニング
+- Inputデータ
+  - ラベル付きのデータセット
+    - `prompt`:Bedrockって何？
+       →`completion`:AWSの生成AIサービスです。
+       →特定タスクの精度を高められる。
+  - jsonl形式
+  - データ量は数百件以上が目安
+- 実行可能なリージョンと対象のモデル
+  - リージョン
+    - バージニア北部
+    - オレゴン
+  - モデル
+    - Claude
+    - Amazon Titan
+    - Cohere Command
+    - Meta Llama2
+- コスト
+  プロビジョンドスループットが必須条件
+
+
+2. 継続的な事前トレーニング
+  - ラベルなしのデータセット
+    - `input`:BedrockはAWSの生成AIサービスです。
+       →ドメイン知識を獲得できる。
+
+### CloudWatchとの連携
+- CloudWatchの主な機能
+  - メトリックス
+  - ログ
+  - ダッシュボード
+  - アラーム
+- CloudWatch Dashboardを作成する方法
+  - [BedrockとCloudWatchの統合](https://aws.amazon.com/jp/blogs/news/amazon-bedrock_and_amazon-cloudwatch_integration_for_genai/)
+
+### 生成AIアプリのネットワーク設計
+- 複数サービスのプライベート接続例
+- NATゲートウェイを使用したプライベート接続例
+- オンプレミス環境とのプライベート接続例
+- AWS上のアプリケーションからAzureOpenAIを呼び出す方法
+  - [Azureネットワーク設定](https://learn.microsoft.com/ja-jp/azure/ai-services/cognitive-services-virtual-networks) 
+  - [AWSとMicrosoftAzure間のサイト間VPN接続](https://repost.aws/ja/knowledge-center/vpn-azure-aws-bgp)
+
+
+### Amazon Sagemaker
+- Sagemakerは機械学習に必要な開発環境を素早く構築できるフルマネージド型の機械学習サービス
+
+### Bedrock Claude Chat
+- [チャットボットのサンプル](https://github.com/aws-samples/bedrock-claude-chat/blob/main/docs/README_ja.md)
