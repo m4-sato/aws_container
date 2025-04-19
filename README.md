@@ -6,7 +6,7 @@
 - SSHキーの作成
 
 ```bash
-ssh-keygen -t ed25519 -C "mssst1116@gmail.com"
+ssh-keygen -t ed25519 -C "youremail@test.com"
 ```
 
 - 公開鍵の登録
