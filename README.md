@@ -29,7 +29,7 @@ ssh -T git@github.com
 git clone git@github.com:m4-sato/aws_container.git
 ```
 
-## Docker コマンド
+## Docker 基本コマンド
 - イメージの作成
 ```bash
 docker image build -t myapp:v1 .
@@ -98,6 +98,45 @@ docker run -p 8501:8501 \
   -e AWS_SECRET_ACCESS_KEY=<IAM Your SECRET KEY> \
   -e AWS_DEFAULT_REGION=us-west-2 \
   my-app
+```
+
+### ローカル環境にてDockerコンテナ内で仮想環境を立ち上げて検証する方法
+
+1. 任意のDockerイメージを立ち上げる
+
+```bash
+docker build -t myapp .
+```
+
+2. コンテナを起動し、インタラクティブシェルに入る
+
+```bash
+docker run -it --rm --name myapp-debug -p 8501:8501 myapp bash
+```
+
+3. 依存関係を確認／（必要なら）再インストール
+```bash
+poetry install --no-root
+```
+
+4. Streamlit アプリを起動して動作確認
+```bash
+poetry run streamlit run test.py \
+  --server.enableCORS false \
+  --server.address 0.0.0.0
+```
+
+5. 途中でpythonファイルを修正したら、再度ctr+Cでサーバーを停止し、再度4.のコマンドを実行
+
+
+その他:streamlitではなく普通のpythonファイルを動かしたい場合：
+```bash
+poetry run python hello.py
+```
+
+- 稼働確認（コンテナ内シェルに入る）
+```bash
+docker exec -it myapp-dev bash
 ```
 
 ## 参考記事
@@ -368,6 +407,11 @@ aws lambda publish-layer-version --layer-name langchain-layer --description "My 
     - [AWS Bedrock & Langfuse記事](https://www.docswell.com/s/kawara-y/Z4VRPG-2025-03-24-212139#p1)
   - [LangSmith VS Langfuse](https://langfuse.com/faq/all/langsmith-alternative)
 
+```bash
+git clone https://github.com/langfuse/langfuse.git
+cd langfuse
+docker compose up -d
+```
 
 ### カスタムモデル（ファインチューニングと継続的な事前トレーニング）
 1. ファインチューニング
